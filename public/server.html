@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body style="width: 400px; margin-left: auto; margin-right: auto">
+    <h2 style="text-align: center">Users List</h2>
+
+    <ul id="list-users"></ul>
+    <div style="margin-top: 100px">
+      <a href="/"><h1 style="text-align: center">Home</h1></a>
+    </div>
+
+    <script>
+      const listUsers = document.getElementById('list-users');
+      const url = '/users';
+
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('data', data);
+          data.forEach((user) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<div style="display: flex; flex-direction: column; margin: 20px; gap: 20px">
+              ${user.username} <img src="${user.imageUrl}" width="100px" alt="users image" />
+              </div>`;
+            listUsers.appendChild(li);
+          });
+        });
+    </script>
+  </body>
+</html>

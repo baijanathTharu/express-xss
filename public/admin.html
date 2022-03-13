@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+  </head>
+  <body style="width: 400px; margin-left: auto; margin-right: auto">
+    <h2 style="text-align: center">Admin Login</h2>
+
+    <form
+      id="user-form"
+      style="display: flex; flex-direction: column; justify-content: center"
+    >
+      <h2>Login Form</h2>
+      <div>
+        <label for="username"></label>
+        <input
+          style="width: 100%; padding: 10px"
+          placeholder="username"
+          type="text"
+          id="'username"
+          name="username"
+        />
+      </div>
+      <div style="display: flex; width: 420px; gap: 20px">
+        <button
+          style="margin-top: 20px; padding: 10px; width: 200px"
+          type="submit"
+        >
+          Submit
+        </button>
+        <a href="/"
+          ><button
+            style="margin-top: 20px; padding: 10px; width: 200px"
+            type="button"
+          >
+            Home
+          </button></a
+        >
+      </div>
+
+      <div class="message" style="margin-top: 20px"></div>
+    </form>
+
+    <script>
+      function submitForm(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const username = data.get('username');
+        localStorage.setItem('username', username);
+
+        // change url
+        window.location.href = '/server.html';
+      }
+
+      const userForm = document.getElementById('user-form');
+      userForm.addEventListener('submit', submitForm);
+    </script>
+  </body>
+</html>
